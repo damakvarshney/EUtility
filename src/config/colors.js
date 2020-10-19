@@ -1,0 +1,16 @@
+export default {
+  primary: "#ffba08",
+  secondary: "#03071e",
+  white: "#ffffff",
+  black: "#000000",
+  Magnolia: "#eae4e9",
+  Linen: "#fff1e6",
+  PalePink: "#fde2e4",
+  MimiPink: "#fad2e1",
+  MintCream: "#e2ece9",
+  PowderBlue: "#bee1e6",
+  Isabelline: "#f0efeb",
+  LavenderWeb: "#dfe7fd",
+  PeriwinkleCrayola: "#cddafd",
+  textBlue: "#8d99ae",
+};
