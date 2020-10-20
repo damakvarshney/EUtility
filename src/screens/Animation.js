@@ -69,7 +69,12 @@ class Animation extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Deck data={DATA} renderCard={this.renderCard} />
+        <Deck
+          data={DATA}
+          renderCard={this.renderCard}
+          // onSwipeRight={() => console.log("Swiped Right")}
+          // onSwipeLeft={() => console.log("Swiped Left")}
+        />
       </View>
     );
   }
