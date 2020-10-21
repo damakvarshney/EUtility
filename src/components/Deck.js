@@ -5,6 +5,9 @@ import {
   PanResponder,
   Animated,
   Dimensions,
+  LayoutAnimation,
+  UIManager,
+  ScrollView,
 } from "react-native";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -19,8 +22,8 @@ class Deck extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { index: 0 };
-    this.position = new Animated.ValueXY(0, 0);
+    this.state = { count: 0 };
+    this.position = new Animated.ValueXY();
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
 
@@ -43,6 +46,12 @@ class Deck extends React.Component {
     });
   }
 
+  componentDidMount() {
+    UIManager.setLayoutAnimationEnabledExperimental &&
+      UIManager.setLayoutAnimationEnabledExperimental(true);
+    LayoutAnimation.easeInEaseOut();
+  }
+
   //direction specifies the different actions
   forceSwipe(direction) {
     const x = direction === "RIGHT" ? SCREEN_WIDTH * 2 : -SCREEN_WIDTH * 2;
@@ -56,9 +65,13 @@ class Deck extends React.Component {
   onSwipeComplete(direction) {
     const { onSwipeLeft, onSwipeRight, data } = this.props;
 
-    const item = data[this.state.index];
+    const item = data[this.state.count];
 
     direction === "RIGHT" ? onSwipeRight(item) : onSwipeLeft(item);
+    //once card is gone we need to reset the position for the new card
+    // console.log("It came back!");
+    this.position.setValue({ x: 0, y: 0 });
+    this.setState({ count: this.state.count + 1 });
   }
 
   resetPosition() {
@@ -80,12 +93,20 @@ class Deck extends React.Component {
   }
 
   renderCard() {
+    if (this.state.count >= this.props.data.length) {
+      return this.props.renderNoMoreCards();
+    }
+
     return this.props.data.map((item, index) => {
-      if (index === 0) {
+      console.log(index);
+      if (index < this.state.count) {
+        return null;
+      }
+      if (index === this.state.count) {
         return (
           <Animated.View
             key={item.id}
-            style={this.getCardStyle()}
+            style={[this.getCardStyle()]}
             {...this.panResponder.panHandlers}
           >
             {this.props.renderCard(item)}
@@ -98,7 +119,7 @@ class Deck extends React.Component {
   }
 
   render() {
-    return <View>{this.renderCard()}</View>;
+    return <ScrollView>{this.renderCard()}</ScrollView>;
   }
 }
 

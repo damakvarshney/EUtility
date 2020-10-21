@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text, Animated, Image } from "react-native";
-import { Card, Button } from "react-native-elements";
+import { View, StyleSheet } from "react-native";
+import CardView from "../components/Animation Components/CardView";
 import colors from "../config/colors";
 import Deck from "./../components/Deck";
+import { Card, Text, Button } from "react-native-elements";
 
 const DATA = [
   {
@@ -50,18 +51,15 @@ const DATA = [
 
 class Animation extends Component {
   renderCard(item) {
+    return <CardView key={item.id} item={item} />;
+  }
+
+  renderNoMoreCards() {
     return (
-      <Card key={item.id}>
-        <Image source={{ uri: item.uri }} style={styles.image} />
-        <Text style={styles.text}>{item.text}</Text>
-        <Text style={{ marginBottom: 10 }}>
-          I can customize the card further.
-        </Text>
-        <Button
-          icon={{ name: "code" }}
-          backgroundColor={colors.PowderBlue}
-          title="View Now!"
-        />
+      <Card>
+        <Text style={styles.text}>All Done!</Text>
+        <Text style={{ marginBottom: 10 }}>No More Cards Available.</Text>
+        <Button title="Get More!" backgroundColor={colors.PowderBlue} />
       </Card>
     );
   }
@@ -72,8 +70,9 @@ class Animation extends Component {
         <Deck
           data={DATA}
           renderCard={this.renderCard}
-          // onSwipeRight={() => console.log("Swiped Right")}
-          // onSwipeLeft={() => console.log("Swiped Left")}
+          onSwipeRight={() => console.log("Swiped Right")}
+          onSwipeLeft={() => console.log("Swiped Left")}
+          renderNoMoreCards={this.renderNoMoreCards}
         />
       </View>
     );
@@ -87,11 +86,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: "bold",
-  },
-  image: {
-    width: "100%",
-    height: 200,
-    resizeMode: "cover",
   },
 });
 
