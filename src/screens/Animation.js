@@ -15,44 +15,50 @@ const DATA = [
   {
     id: 1,
     text: "Card #1",
-    uri: "https://pixabay.com/photos/house-beach-coast-sand-coastline-5651866/",
+    uri:
+      "https://cdn.pixabay.com/photo/2016/07/01/23/16/amusement-park-1492099_960_720.jpg",
   },
   {
     id: 2,
     text: "Card #2",
-    uri: "https://pixabay.com/photos/canal-boats-buildings-reflection-5488271/",
+    uri:
+      "https://cdn.pixabay.com/photo/2020/10/18/18/42/bulb-5665770_960_720.jpg",
   },
   {
     id: 3,
     text: "Card #3",
-    uri: "https://pixabay.com/photos/dome-skyline-cityscape-urban-5622133/",
+    uri:
+      "https://cdn.pixabay.com/photo/2020/07/24/08/07/architecture-5433221_960_720.jpg",
   },
   {
     id: 4,
     text: "Card #4",
     uri:
-      "https://pixabay.com/photos/train-railway-station-train-station-5638568/",
+      "https://cdn.pixabay.com/photo/2020/10/23/21/13/china-town-5679982_960_720.jpg",
   },
   {
     id: 5,
     text: "Card #5",
-    uri: "https://pixabay.com/photos/travel-hot-air-balloon-aviation-1756150/",
+    uri:
+      "https://cdn.pixabay.com/photo/2016/12/11/12/42/canada-1899328_960_720.jpg",
   },
   {
     id: 6,
     text: "Card #6",
-    uri: "https://pixabay.com/photos/gallery-art-mural-baroque-3114279/",
+    uri:
+      "https://cdn.pixabay.com/photo/2017/09/02/13/21/guggenheim-museum-2707258_960_720.jpg",
   },
   {
     id: 7,
     text: "Card #7",
-    uri: "https://pixabay.com/photos/camera-photos-photograph-514992/",
+    uri:
+      "https://cdn.pixabay.com/photo/2020/10/18/16/45/porsche-5665390_960_720.jpg",
   },
 ];
 
 class Animation extends Component {
   renderCard(item) {
-    return <CardView key={item.id} item={item} />;
+    return <CardView id={item.id} item={item} />;
   }
 
   renderNoMoreCards() {

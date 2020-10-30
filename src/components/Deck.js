@@ -1,7 +1,6 @@
 import React from "react";
 import {
   View,
-  StyleSheet,
   PanResponder,
   Animated,
   Dimensions,
@@ -97,43 +96,30 @@ class Deck extends React.Component {
       return this.props.renderNoMoreCards();
     }
 
-    return this.props.data
-      .map((item, index) => {
-        // console.log(index);
-        if (index < this.state.count) {
-          return null;
-        }
-        if (index === this.state.count) {
-          return (
-            <Animated.View
-              key={item.id}
-              style={[this.getCardStyle(), styles.cardView]}
-              {...this.panResponder.panHandlers}
-            >
-              {this.props.renderCard(item)}
-            </Animated.View>
-          );
-        }
-
+    return this.props.data.map((item, index) => {
+      if (index < this.state.count) {
+        return null;
+      }
+      if (index === this.state.count) {
+        console.log("Index", index, "item_Index", this.state.count);
         return (
-          <Animated.View style={[styles.cardView, { top: index * 10 }]}>
+          <Animated.View
+            key={item.id}
+            style={[this.getCardStyle()]}
+            {...this.panResponder.panHandlers}
+          >
             {this.props.renderCard(item)}
           </Animated.View>
         );
-      })
-      .reverse();
+      }
+
+      return <View>{this.props.renderCard(item)}</View>;
+    });
   }
 
   render() {
-    return <View>{this.renderCard()}</View>;
+    return <ScrollView>{this.renderCard()}</ScrollView>;
   }
 }
-
-const styles = StyleSheet.create({
-  cardView: {
-    position: "absolute",
-    width: SCREEN_WIDTH,
-  },
-});
 
 export default Deck;

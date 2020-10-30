@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import AppButton from "../components/Button";
+import AppButton from "../components/AppButton";
 
 const EditColorSquare = ({ color, onIncrease, onDecrease }) => {
   return (

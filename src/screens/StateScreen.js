@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AppButton from "./../components/Button";
+import AppButton from "./../components/AppButton";
 import { View, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 
 const StateScreen = () => {

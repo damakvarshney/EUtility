@@ -1,7 +1,7 @@
 import React from "react";
 import LottieView from "lottie-react-native";
 
-function ActivityIndicator({ visible = false }) {
+function AppActivityIndicator({ visible = false }) {
   if (!visible) return null;
 
   return (
@@ -13,4 +13,4 @@ function ActivityIndicator({ visible = false }) {
   );
 }
 
-export default ActivityIndicator;
+export default AppActivityIndicator;

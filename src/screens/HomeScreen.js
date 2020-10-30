@@ -10,7 +10,7 @@ import { AppLoading } from "expo";
 import { useFonts } from "expo-font";
 import colors from "../config/colors";
 
-import AppText from "./../components/Text";
+import AppText from "./../components/AppText";
 
 const HomeScreen = ({ navigation }) => {
   const data = [
@@ -19,6 +19,7 @@ const HomeScreen = ({ navigation }) => {
     { name: "Horizontal Slider", targetScreen: "HorizontalScreen" },
     { name: "Animations", targetScreen: "AnimationScreen" },
     { name: "Ball Move", targetScreen: "BallScreen" },
+    { name: "OTP Usage", targetScreen: "SignUp" },
   ];
 
   let [fontsLoaded] = useFonts({

@@ -1,12 +1,12 @@
 import React from "react";
-import { View, Image, Text, StyleSheet } from "react-native";
+import { Image, Text, StyleSheet } from "react-native";
 import { Card, Button } from "react-native-elements";
 import colors from "../../config/colors";
 
 class CardView extends React.Component {
   render() {
     return (
-      <Card key={this.props.item.id}>
+      <Card key={this.props.id} style={{ borderRadius: 10 }}>
         <Image
           source={{ uri: this.props.item.uri }}
           style={styles.image}
@@ -17,7 +17,7 @@ class CardView extends React.Component {
           I can customize the card further.
         </Text>
         <Button
-          // icon={{ name: "code" }}
+          icon={{ name: "code" }}
           backgroundColor={colors.PowderBlue}
           title="View Now!"
         />
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 200,
     resizeMode: "cover",
+    borderRadius: 10,
   },
 });
 export default CardView;

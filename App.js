@@ -7,6 +7,9 @@ import CustomColor from "./src/screens/CustomColor";
 import HorizontalScreen from "./src/screens/HorizontalScreen";
 import Animation from "./src/screens/Animation";
 import ElementMove from "./src/screens/ElementMove";
+import SignUpForm from "./src/components/SignUpForm";
+import SignInForm from "./src/components/SignInForm";
+import Successful from "./src/components/Successful";
 
 const Stack = createStackNavigator();
 
@@ -24,6 +27,9 @@ const App = () => {
         <Stack.Screen name="HorizontalScreen" component={HorizontalScreen} />
         <Stack.Screen name="AnimationScreen" component={Animation} />
         <Stack.Screen name="BallScreen" component={ElementMove} />
+        <Stack.Screen name="SignUp" component={SignUpForm} />
+        <Stack.Screen name="SignIn" component={SignInForm} />
+        <Stack.Screen name="Success" component={Successful} />
       </Stack.Navigator>
     </NavigationContainer>
   );
